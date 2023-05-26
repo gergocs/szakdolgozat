@@ -4,10 +4,10 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SH1106.h>
 
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
-#define analogX 36 // X
-#define analogY 39 // Y
+#define SCREEN_WIDTH 128  // OLED display width, in pixels
+#define SCREEN_HEIGHT 64  // OLED display height, in pixels
+#define analogX 36        // X
+#define analogY 39        // Y
 #define SDA 21
 #define SCL 22
 
@@ -16,7 +16,7 @@ int analogYValue = 0;
 int readXValue = 0;
 int readYValue = 0;
 
-uint8_t broadcastAddress[] = {0xC8, 0xF0, 0x9E, 0xF3, 0xD8, 0x08};
+uint8_t broadcastAddress[] = { 0xC8, 0xF0, 0x9E, 0xF3, 0xD8, 0x08 };
 
 typedef struct struct_message {
   int xValue;
@@ -36,9 +36,9 @@ void onDataRecv(const uint8_t* mac, const uint8_t* incomingData, int len) {
   readYValue = incomingReadings.yValue;
 }
 
-void setup(){
+void setup() {
   // Init OLED display
-  display.begin(SH1106_SWITCHCAPVCC, 0x3C); 
+  display.begin(SH1106_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
 
   WiFi.mode(WIFI_STA);
@@ -49,32 +49,31 @@ void setup(){
   }
 
   memcpy(peerInfo.peer_addr, broadcastAddress, 6);
-  peerInfo.channel = 0;  
+  peerInfo.channel = 0;
   peerInfo.encrypt = false;
 
-  if (esp_now_add_peer(&peerInfo) != ESP_OK){
+  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
     display.println("ESP-NOW");
     return;
   }
 
   esp_now_register_recv_cb(onDataRecv);
 }
- 
-void loop(){
+
+void loop() {
   display.setTextSize(2);
   display.setTextColor(WHITE);
-  display.setCursor(0,0);
+  display.setCursor(0, 0);
 
-  outgoingReadings.xValue = analogXValue;
   outgoingReadings.yValue = analogYValue;
 
-  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t*) &outgoingReadings, sizeof(outgoingReadings));
+  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t*)&outgoingReadings, sizeof(outgoingReadings));
 
   if (result != ESP_OK) {
     display.println("Error");
   } else {
-    display.println("x="+String(readXValue));
-    display.println("y="+String(readYValue));
+    display.println("x=" + String(readXValue));
+    display.println("y=" + String(readYValue));
   }
 
   display.display();
@@ -83,6 +82,18 @@ void loop(){
 
   analogXValue = analogRead(analogX);
   analogYValue = analogRead(analogY);
+
+  if (analogXValue < 100) {
+    outgoingReadings.xValue = -2;
+  } else if (analogXValue < 1000) {
+    outgoingReadings.xValue = -1;
+  } else if (analogXValue < 2000) {
+    outgoingReadings.xValue = 0;
+  } else if (analogXValue < 3500) {
+    outgoingReadings.xValue = 1;
+  } else {
+    outgoingReadings.xValue = 2;
+  }
 
   delay(100);
 }
