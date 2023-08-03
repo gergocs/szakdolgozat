@@ -2,26 +2,56 @@
 
 #include <Wire.h>
 
-CarController::CarController(uint8_t motor1Power, uint8_t motor2Power, uint8_t address)
-        : motor1(motor1Power, address), motor2(motor2Power, address) {
+#if (ADVANCED_CONTROLLER == 0)
+
+CarController::CarController(DaisyChainPosition position)
+        : motor1(M1_POWER, position), motor2(M2_POWER, position) {
     Serial.println("i2c speeeeed");
-    Serial.println(this->wire.begin(21, 22, TWI_FREQ));
-    Serial.println(this->wire.getClock());
+    Serial.println(Wire.begin(21, 22, TWI_FREQ));
+    Serial.println(Wire.getClock());
 }
 
+#else
+
+CarController::CarController(DaisyChainPosition position) : controller(position) {
+    Wire.begin(21, 22, TWI_FREQ);
+    Serial.println(Wire.getClock());
+
+    char type[HiTechnicController::NUM_SENSOR_TYPE_CHARS];
+    this->controller.getSensorType((uint8_t *) type);
+
+    if (std::string str(type); str == "MotorCon") {
+        Serial.print("--> Motor controller at daisy chain address ");
+        Serial.println((int) DaisyChainPosition::FIRST);
+    } else {
+        Serial.print("ERROR: Expected MotorCon, got ");
+        Serial.println(str.c_str());
+    }
+
+    this->leftDriveMotor = new HiTechnicMotor(&(this->controller), MotorPort::PORT_1);
+    this->rightDriveMotor = new HiTechnicMotor(&(this->controller), MotorPort::PORT_2);
+    this->leftDriveMotor->setPower(0);
+    this->leftDriveMotor->setPower(0);
+}
+
+#endif
+
 void CarController::stop() {
-    this->motor1.writeSpeed(0, &(this->wire));
-    this->motor2.writeSpeed(0, &(this->wire));
+#if (ADVANCED_CONTROLLER == 0)
+    this->motors(0, 0);
+#else
+    this->leftDriveMotor->setPower(0);
+    this->rightDriveMotor->setPower(0);
+#endif
 }
 
 void CarController::left(int8_t power, long t) {
-    this->motor1.writeSpeed(power, &(this->wire));
-    this->motor2.writeSpeed(power, &(this->wire));
+    this->motors(power, power);
     delay(t);
     stop();
 }
 
-__attribute__((unused)) void CarController::right(int8_t power, long t) {
+void CarController::right(int8_t power, long t) {
     this->left(-power, t);
 }
 
@@ -31,11 +61,16 @@ void CarController::straight(int8_t power, long t) {
     stop();
 }
 
-__attribute__((unused)) void CarController::reverse(int8_t power, long t) {
+void CarController::reverse(int8_t power, long t) {
     this->straight(-power, t);
 }
 
 void CarController::motors(int8_t power1, int8_t power2) {
-    this->motor1.writeSpeed(power1, &(this->wire));
-    this->motor2.writeSpeed(power2, &(this->wire));
+#if (ADVANCED_CONTROLLER == 0)
+    this->motor1.writeSpeed(power1);
+    this->motor2.writeSpeed(power2);
+#else
+    this->leftDriveMotor->setPower(power1);
+    this->rightDriveMotor->setPower(power2);
+#endif
 }

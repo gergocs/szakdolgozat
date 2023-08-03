@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="car" targetName="Debug" />
+      <config projectName="car" targetName="Z_DUMMY_TARGET" />
+      <config projectName="car" targetName="Production" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="nodemcu-32s-MinGW" ENABLED="true" CONFIG_NAME="nodemcu-32s" TOOLCHAIN_NAME="MinGW" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6a0b0627-b431-483b-869e-86dfd8cda63d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/communication/communication.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HiTechnic-Arduino" beforeDir="false" afterPath="$PROJECT_DIR$/../../HiTechnic-Arduino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platformio.ini" beforeDir="false" afterPath="$PROJECT_DIR$/platformio.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carController/carController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/carController/carController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carController/carController.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/carController/carController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carController/motor/motor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/carController/motor/motor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carController/motor/motor.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/carController/motor/motor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:nodemcu-32s-MinGW" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="e16ajvni" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="3.3" />
+  </component>
+  <component name="ProjectId" id="2NQ9TyKB6q5RzW0V3B0LSVGjU3L" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/csger/Nextcloud/uni/szakdolgozat/car/car",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "serialmonitor.settings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/carController/HiTechnicAdvancedControllers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/carController/motor" />
+      <recent name="$PROJECT_DIR$/src/carController" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PlatformIO.PlatformIO Upload">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Z_DUMMY_TARGET" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="car" TARGET_NAME="Z_DUMMY_TARGET" CONFIG_NAME="nodemcu-32s-MinGW" RUN_TARGET_PROJECT_NAME="car" RUN_TARGET_NAME="Z_DUMMY_TARGET">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlatformIO Debug" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="car" TARGET_NAME="Debug" CONFIG_NAME="nodemcu-32s-MinGW" RUN_TARGET_PROJECT_NAME="car" RUN_TARGET_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlatformIO Upload" type="platformio" factoryName="PlatformIO Upload" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="car" TARGET_NAME="Production" CONFIG_NAME="nodemcu-32s-MinGW" RUN_TARGET_PROJECT_NAME="car" RUN_TARGET_NAME="Production">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Z_DUMMY_TARGET" />
+      <item itemvalue="PlatformIO.PlatformIO Debug" />
+      <item itemvalue="PlatformIO.PlatformIO Upload" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a0b0627-b431-483b-869e-86dfd8cda63d" name="Changes" comment="" />
+      <created>1679585450956</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679585450956</updated>
+      <workItem from="1679585452162" duration="500000" />
+      <workItem from="1679595492061" duration="413000" />
+      <workItem from="1679983269496" duration="7000" />
+      <workItem from="1680949437624" duration="1100000" />
+      <workItem from="1681733100350" duration="840000" />
+      <workItem from="1681798968077" duration="13000" />
+      <workItem from="1683103712645" duration="3021000" />
+      <workItem from="1683186556020" duration="1600000" />
+      <workItem from="1683200959152" duration="8000" />
+      <workItem from="1683267798958" duration="13000" />
+      <workItem from="1683443529505" duration="602000" />
+      <workItem from="1683616316068" duration="80000" />
+      <workItem from="1683998279186" duration="3910000" />
+      <workItem from="1684046946716" duration="807000" />
+      <workItem from="1684049051870" duration="11000" />
+      <workItem from="1685099286217" duration="7553000" />
+      <workItem from="1685261272121" duration="34000" />
+      <workItem from="1685262963304" duration="599000" />
+      <workItem from="1685272912758" duration="243000" />
+      <workItem from="1686904337695" duration="227000" />
+      <workItem from="1686904586685" duration="22000" />
+      <workItem from="1686904619832" duration="1203000" />
+      <workItem from="1686918324319" duration="93000" />
+      <workItem from="1686918551363" duration="57000" />
+      <workItem from="1686921917123" duration="407000" />
+      <workItem from="1686922344625" duration="154000" />
+      <workItem from="1686992847281" duration="3361000" />
+      <workItem from="1686996319853" duration="2849000" />
+      <workItem from="1687178108738" duration="17000" />
+      <workItem from="1689865331716" duration="189000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

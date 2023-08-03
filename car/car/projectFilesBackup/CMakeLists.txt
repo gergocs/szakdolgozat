@@ -30,4 +30,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/carController/motor/motor.cpp src/communication/ESPNowCommunication.cpp src/communication/ESPNowCommunication.h)
+add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/communication/communication.h)

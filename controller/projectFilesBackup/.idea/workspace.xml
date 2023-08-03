@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="controller" targetName="Production" />
+      <config projectName="controller" targetName="Debug" />
+      <config projectName="controller" targetName="Z_DUMMY_TARGET" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="nodemcu-32s" ENABLED="true" CONFIG_NAME="nodemcu-32s" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ddbd2896-3ea3-48fc-9d36-8adf4f002f37" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../car/car/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/.idea/car.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/.idea/discord.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/include/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/lib/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/platformio.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicController.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicDcMotorController.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicDcMotorController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicMotor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicMotor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicServo.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicServo.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicServoController.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/HiTechnicAdvancedControllers/HiTechnicServoController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/carController.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/carController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/motor/motor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/carController/motor/motor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/src/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../car/car/test/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/controller.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/esp32-sh1106-oled-master/Adafruit_SH1106.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/esp32-sh1106-oled-master/Adafruit_SH1106.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/esp32-sh1106-oled-master/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/esp32-sh1106-oled-master/examples/oled/oled.ino" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/esp32-sh1106-oled-master/library.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/esp32-sh1106-oled-master/license.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../car/car/car.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../car/car/carController.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../car/car/carController.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../car/car/motor.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../car/car/motor.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/controller.ino" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.ino" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:nodemcu-32s" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="sy5h6yvz" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="1.2" />
+  </component>
+  <component name="ProjectId" id="2PSGpEWzEPbJucVOPWWKYUJPhRJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/gergocs/projects/szakdolgozat/controller/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "clion.platformio.config",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PlatformIO.PlatformIO Upload">
+    <configuration name="Z_DUMMY_TARGET" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="controller" TARGET_NAME="Z_DUMMY_TARGET" CONFIG_NAME="nodemcu-32s" RUN_TARGET_PROJECT_NAME="controller" RUN_TARGET_NAME="Z_DUMMY_TARGET">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlatformIO Debug" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="controller" TARGET_NAME="Debug" CONFIG_NAME="nodemcu-32s" RUN_TARGET_PROJECT_NAME="controller" RUN_TARGET_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlatformIO Upload" type="platformio" factoryName="PlatformIO Upload" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="controller" TARGET_NAME="Production" CONFIG_NAME="nodemcu-32s" RUN_TARGET_PROJECT_NAME="controller" RUN_TARGET_NAME="Production">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Z_DUMMY_TARGET" />
+      <item itemvalue="PlatformIO.PlatformIO Debug" />
+      <item itemvalue="PlatformIO.PlatformIO Upload" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ddbd2896-3ea3-48fc-9d36-8adf4f002f37" name="Changes" comment="" />
+      <created>1683443249909</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683443249909</updated>
+      <workItem from="1683443250918" duration="2246000" />
+      <workItem from="1684052487945" duration="426000" />
+      <workItem from="1685100497824" duration="5785000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
+  </component>
+</project>
