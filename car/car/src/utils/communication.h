@@ -8,32 +8,20 @@
 #include <WiFi.h>
 #include <esp_now.h>
 
-struct InComing {
-    uint8_t xValue;
-    uint8_t yValue;
-};
-
-struct OutGoing {
-    short speed;
-};
-
-InComing incomingData = {};
-extern OutGoing outgoingData;
+#include "state/State.h"
+#include "config.h"
 
 esp_now_peer_info_t peerInfo;
 
-uint8_t broadcastAddress[] = {0x9C, 0x9C, 0x1F, 0xDC, 0x2C, 0xC0};
-
-uint8_t readXValue = 0;
-uint8_t readYValue = 0;
-
 void onDataRecv(const uint8_t *mac, const uint8_t *data, int len) {
-    memcpy(&incomingData, data, sizeof(incomingData));
-    readXValue = incomingData.xValue;
-    readYValue = incomingData.yValue;
+    memcpy(&State::getInstance().getInComingReadings(), data, sizeof(State::getInstance().getInComingReadings()));
+    State::getInstance().setButtonValue(State::getInstance().getInComingReadings().buttonValue);
+    State::getInstance().setReadXValue(State::getInstance().getInComingReadings().xValue);
+    State::getInstance().setReadYValue(State::getInstance().getInComingReadings().yValue);
+    State::getInstance().setIsDataValid(true);
 }
 
-void initESPNow(void) {
+void initESPNow() {
     WiFiClass::mode(WIFI_STA);
 
     if (esp_now_init() != ESP_OK) {
@@ -51,10 +39,19 @@ void initESPNow(void) {
     }
 
     esp_now_register_recv_cb(onDataRecv);
+
+    Serial.println("ESPNow Init Success");
 }
 
-void sendData() {
-    esp_now_send(broadcastAddress, (uint8_t *) &outgoingData, sizeof(outgoingData));
+esp_err_t sendData() {
+    if (State::getInstance().getIsDataReady()) {
+        State::getInstance().setIsDataReady(false);
+
+        return esp_now_send(broadcastAddress, (uint8_t *) &State::getInstance().getOutgoingReadings(),
+                            sizeof(State::getInstance().getOutgoingReadings()));
+    }
+
+    return ESP_OK;
 }
 
 #endif //CAR_COMMUNICATION_H

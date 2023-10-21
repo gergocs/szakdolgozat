@@ -4,8 +4,6 @@
 
 #include "Graph.h"
 
-#include <memory>
-
 Graph::Graph(uint8_t address, int8_t sda, int8_t scl) {
     display = std::make_unique<Adafruit_SH1106>(sda, scl);
     display->begin(SH1106_SWITCHCAPVCC, address);
@@ -41,7 +39,6 @@ void Graph::drawAxis(int16_t x0, int16_t y0, int16_t x1, int16_t y1) {
 }
 
 void Graph::addData(int16_t data) {
-
     if (this->points.size() > 120) {
         this->points.pop_front();
     }
@@ -69,7 +66,7 @@ void Graph::printText(std::string_view text) {
     display->display();
 }
 
-void Graph::clear(void) {
+void Graph::clear() {
     display->clearDisplay();
     display->display();
 }

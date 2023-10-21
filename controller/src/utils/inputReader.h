@@ -6,39 +6,27 @@
 #define CONTROLLER_INPUTREADER_H
 
 #include <Arduino.h>
-#include "Communication.h"
-#include "interruptHandler.h"
 
-void readInput(uint8_t xPin, uint8_t yPin, Outgoing& outgoing) {
-    auto analogXValue = analogRead(xPin);
-    auto analogYValue = analogRead(yPin);
+#include "communication.h"
+#include "state/State.h"
 
-    if (analogXValue < 100) {
-        outgoing.xValue = 0;
-    } else if (analogXValue < 1000) {
-        outgoing.xValue = 1;
-    } else if (analogXValue < 2000) {
-        outgoing.xValue = 2;
-    } else if (analogXValue < 3500) {
-        outgoing.xValue = 3;
-    } else {
-        outgoing.xValue = 4;
-    }
+void readInput() {
+    auto analogXValue = analogRead(analogXPin);
+    auto analogYValue = analogRead(analogYPin);
+    auto buttonValue = digitalRead(buttonPin) == LOW;
 
-    if (analogYValue < 100) {
-        outgoing.yValue = 0;
-    } else if (analogYValue < 1000) {
-        outgoing.yValue = 1;
-    } else if (analogYValue < 2000) {
-        outgoing.yValue = 2;
-    } else if (analogYValue < 3500) {
-        outgoing.yValue = 3;
-    } else {
-        outgoing.yValue = 4;
-    }
+    State::getInstance().getOutgoingReadings().xValue = map(analogXValue, 0, 4095, 0,
+                                                            std::numeric_limits<uint8_t>::max());
+    State::getInstance().getOutgoingReadings().yValue = map(analogYValue, 0, 4095, 0,
+                                                            std::numeric_limits<uint8_t>::max());
+    State::getInstance().getOutgoingReadings().buttonValue = buttonValue;
 
-    if (outgoing.xValue != 2 || outgoing.yValue != 2) {
-        resetTimer();
+    if (!((State::getInstance().getOutgoingReadings().xValue < restartMax &&
+           State::getInstance().getOutgoingReadings().xValue > restartMin) &&
+          (State::getInstance().getOutgoingReadings().yValue < restartMax &&
+           State::getInstance().getOutgoingReadings().yValue > restartMin))
+        || State::getInstance().getOutgoingReadings().buttonValue) {
+        State::getInstance().resetTimer();
     }
 }
 

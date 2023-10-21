@@ -1,39 +1,55 @@
 #include <Arduino.h>
+
 #include "utils/inputReader.h"
-#include "utils/interruptHandler.h"
-#include "graph/Graph.h"
-
-constexpr int8_t sdaPin = 21;
-constexpr int8_t sclPin = 22;
-constexpr int8_t analogXPin = 36;
-constexpr int8_t analogYPin = 39;
-constexpr uint8_t displayAddress = 0x3C;
-
-Graph* graph = nullptr;
-
-#include "utils/Communication.h"
+#include "utils/communication.h"
 
 void setup() {
     Serial.begin(9600);
-    graph = new Graph(displayAddress, sdaPin, sclPin);
 
-    initESPNow();
+    State::getInstance().getGraph()->printText("Preparing the communication...");
+
+    delay(1000);
+
+    if (initESPNow()) {
+        State::getInstance().getGraph()->printText("Communication ready!");
+    } else {
+        State::getInstance().getGraph()->printText("Error initializing the communication");
+        delay(10000);
+        ESP.restart();
+    }
 
     delay(3000);
 
-    initInterrupt();
+    State::getInstance().getGraph()->printText("Ready");
+
+    delay(1000);
 }
 
 void loop() {
-    readInput(analogXPin, analogYPin, outgoingReadings);
+    readInput();
 
-    esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &outgoingReadings, sizeof(outgoingReadings));
+    esp_err_t result = esp_now_send(broadcastAddress,
+                                    (uint8_t *) &State::getInstance().getOutgoingReadings(),
+                                    sizeof(State::getInstance().getOutgoingReadings()));
 
     if (result != ESP_OK) {
-        graph->printText("Error");
+        State::getInstance().incrementErrorCounter();
+
+        if (State::getInstance().getErrorCounter() > espNowErrorMax) {
+            State::getInstance().getGraph()->printText(
+                    "Error sending data please check connection and restart the device");
+
+            delay(10000);
+
+            ESP.restart();
+        }
     } else {
-        graph->drawData();
+        State::getInstance().resetErrorCounter();
     }
 
-    delay(1);
+    if (!State::getInstance().getInComingReadings().isBattery) {
+        State::getInstance().getGraph()->drawData();
+    }
+
+    delay(10);
 }

@@ -7,16 +7,23 @@
 
 #include <memory>
 #include <deque>
+
 #include "Adafruit_SH1106.h"
 
 class Graph {
 public:
     Graph(uint8_t address, int8_t sda, int8_t scl);
+
     void drawAxis(int16_t x0, int16_t y0, int16_t x1, int16_t y1);
+
     void drawData();
+
     void printText(std::string_view text);
+
     void addData(int16_t data);
-    void clear(void);
+
+    void clear();
+
 private:
     int16_t xStart = 0;
     int16_t yStart = 0;
