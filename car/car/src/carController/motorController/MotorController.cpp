@@ -27,26 +27,12 @@ void MotorController::start() {
     analogWrite(this->enablePin, this->power);
     digitalWrite(this->controllerPin1, this->direction);
     digitalWrite(this->controllerPin2, !this->direction);
-
-    //digitalWrite(enablePin, HIGH);
-//
-    //if (this->direction) {
-    //    analogWrite(controllerPin1, this->power);
-    //    analogWrite(controllerPin2, 0);
-    //} else {
-    //    analogWrite(controllerPin2, this->power);
-    //    analogWrite(controllerPin1, 0);
-    //}
 }
 
 void MotorController::stop() {
     analogWrite(this->enablePin, 0);
     digitalWrite(this->controllerPin1, HIGH);
     digitalWrite(this->controllerPin2, HIGH);
-
-    //digitalWrite(enablePin, LOW);
-    //analogWrite(controllerPin1, 255);
-    //analogWrite(controllerPin2, 255);
 }
 
 bool MotorController::isDirection() const {

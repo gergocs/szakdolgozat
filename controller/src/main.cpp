@@ -1,6 +1,5 @@
 #include <Arduino.h>
 
-#include "utils/inputReader.h"
 #include "utils/communication.h"
 
 void setup() {
@@ -20,12 +19,47 @@ void setup() {
 
     delay(3000);
 
-    State::getInstance().getGraph()->printText("Ready");
+    State::getInstance().getGraph()->printText("Waiting for connection");
+
+    State::getInstance().getOutgoingReadings().buttonValue = true;
+    State::getInstance().getOutgoingReadings().xValue = 127;
+    State::getInstance().getOutgoingReadings().yValue = 127;
+
+
+    while (!State::getInstance().isDataValid1()) {
+        esp_now_send(broadcastAddress, (uint8_t *) &State::getInstance().getOutgoingReadings(),
+                     sizeof(State::getInstance().getOutgoingReadings()));
+        delay(100);
+
+        if (State::getInstance().isGoToSleep1()) {
+            State::getInstance().getGraph()->clear();
+            esp_now_deinit();
+            esp_deep_sleep_start();
+        }
+    }
+
+    State::getInstance().getGraph()->printText("Connected!");
 
     delay(1000);
+
+    if (!State::getInstance().getInComingReadings().isBattery) {
+        State::getInstance().getGraph()->drawData();
+    }
+
+    delay(5000);
 }
 
 void loop() {
+    if (State::getInstance().isGoToSleep1()) {
+        esp_now_deinit();
+        State::getInstance().getGraph()->clear();
+        esp_deep_sleep_start();
+
+        while(true) {
+            delay(1000);
+        }
+    }
+
     readInput();
 
     esp_err_t result = esp_now_send(broadcastAddress,

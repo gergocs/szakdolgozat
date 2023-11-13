@@ -15,6 +15,7 @@ constexpr uint8_t encoder0APin = 22;
 constexpr uint8_t encoder0BPin = 23;
 constexpr uint8_t encoder1APin = 36;
 constexpr uint8_t encoder1BPin = 39;
+constexpr uint8_t batteryPin = 34;
 
 constexpr uint8_t controller0Pin1 = 12;
 constexpr uint8_t controller0Pin2 = 14;
@@ -27,6 +28,8 @@ constexpr uint8_t restartOffset = 15;
 constexpr uint8_t moveMin = (std::numeric_limits<uint8_t>::max() / 2) - restartOffset;
 constexpr uint8_t moveMax = (std::numeric_limits<uint8_t>::max() / 2) + restartOffset;
 constexpr uint8_t timeOfCheckMax = 30;
+constexpr uint32_t waitTime = 300000000;
+constexpr uint8_t divider = 80;
 
 constexpr bool enablePID = true;
 

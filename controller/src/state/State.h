@@ -45,6 +45,14 @@ public:
 
     void resetTimer();
 
+    bool isDataValid1() const;
+
+    void setIsDataValid(bool isDataValid);
+
+    bool isGoToSleep1() const;
+
+    void setIsGoToSleep(bool isGoToSleep);
+
 private:
     State();
 
@@ -53,6 +61,8 @@ private:
     std::unique_ptr<Graph> graph;
     uint8_t errorCounter;
     hw_timer_t *timer;
+    bool isDataValid;
+    bool isGoToSleep;
 };
 
 

@@ -54,4 +54,8 @@ esp_err_t sendData() {
     return ESP_OK;
 }
 
+uint8_t readBattery() {
+    return map(analogReadMilliVolts(batteryPin), 0, 3300, 0, 100);
+}
+
 #endif //CAR_COMMUNICATION_H

@@ -11,7 +11,7 @@ void move() {
         auto speed = State::getInstance().getRobotController()->getCurrentSpeed(time,
                                                                                 State::getInstance().getEncoder(0),
                                                                                 State::getInstance().getEncoder(1));
-        State::getInstance().getOutgoingReadings().speed = map(speed, -70, 70, 0, 50); // TODO remove 30
+        State::getInstance().getOutgoingReadings().speed = map(speed, -70, 70, 0, 50);
         State::getInstance().getOutgoingReadings().isBattery = false;
         State::getInstance().setIsDataReady(true);
     }
@@ -44,11 +44,11 @@ void move() {
             } else if (moveX > moveMax) {
                 State::getInstance().getRobotController()->straight(speed);
             }
-        } else { // TODO battery check
+        } else {
             State::getInstance().getRobotController()->stop();
             delay(20);
             State::getInstance().getRobotController()->setCruseControl(false);
-            State::getInstance().getOutgoingReadings().speed = 30;
+            State::getInstance().getOutgoingReadings().speed = readBattery();
             State::getInstance().getOutgoingReadings().isBattery = true;
             State::getInstance().setIsDataReady(true);
             return;
@@ -56,9 +56,9 @@ void move() {
     } else {
         int16_t speed = std::abs(moveX - 127) * 2;
 
-        if (moveY < moveMin) {
-            State::getInstance().getRobotController()->left(speed); // TODO maybe check speed
-        } else if (moveY > moveMax) {
+        if (moveY < moveMin && speed > 20) { // TODO Check if this is correct
+            State::getInstance().getRobotController()->left(speed);
+        } else if (moveY > moveMax && speed > 20) {
             State::getInstance().getRobotController()->right(speed);
         } else {
             if (moveX < moveMin) {

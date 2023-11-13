@@ -11,15 +11,20 @@
 
 #include "graph/Graph.h"
 #include "state/State.h"
+#include "inputReader.h"
 
 esp_now_peer_info_t peerInfo;
 
 void onDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len) {
     memcpy(&State::getInstance().getInComingReadings(), incomingData,
            sizeof(State::getInstance().getInComingReadings()));
+
+    State::getInstance().setIsDataValid(true);
+
     if (State::getInstance().getInComingReadings().isBattery) {
         State::getInstance().getGraph()->printText(
-                "Battery level: " + std::to_string(State::getInstance().getInComingReadings().readYValue) + "%");
+                "Robot battery: " + std::to_string(State::getInstance().getInComingReadings().readYValue) + "%\n" +
+                "Controller battery: " + std::to_string(readBattery()) + "%)");
         return;
     } else {
         State::getInstance().getGraph()->addData(State::getInstance().getInComingReadings().readYValue);

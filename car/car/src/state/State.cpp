@@ -4,7 +4,11 @@
 
 #include "State.h"
 
+#include <esp_now.h>
+
 void IRAM_ATTR Timer0_ISR() {
+    esp_now_deinit();
+    State::getInstance().getRobotController()->stop();
     esp_deep_sleep_start();
 }
 
@@ -20,9 +24,9 @@ State::State() : encoders({Encoder(encoder0APin, encoder0BPin), Encoder(encoder1
                  outgoingReadings({}), inComingReadings({}), readXValue(0), readYValue(0), buttonValue(false),
                  isDataReady(false), timer(),
                  robotController(std::make_unique<RobotController>()), isDataValid(false) {
-    this->timer = timerBegin(0, 65535, true);
+    this->timer = timerBegin(0, divider, true);
     timerAttachInterrupt(this->timer, &Timer0_ISR, true);
-    timerAlarmWrite(this->timer, 375000, true);
+    timerAlarmWrite(this->timer, waitTime, true);
     timerAlarmEnable(this->timer);
 
     attachInterrupt(digitalPinToInterrupt(encoder0APin), &Encoder0_ISR, CHANGE);

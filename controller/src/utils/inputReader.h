@@ -26,8 +26,13 @@ void readInput() {
           (State::getInstance().getOutgoingReadings().yValue < restartMax &&
            State::getInstance().getOutgoingReadings().yValue > restartMin))
         || State::getInstance().getOutgoingReadings().buttonValue) {
+        Serial.println("Timer reset");
         State::getInstance().resetTimer();
     }
+}
+
+uint8_t readBattery() {
+    return map(analogReadMilliVolts(batteryPin), 0, 3300, 0, 100);
 }
 
 #endif //CONTROLLER_INPUTREADER_H
