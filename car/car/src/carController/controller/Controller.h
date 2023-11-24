@@ -13,10 +13,9 @@ public:
 
     virtual void setTarget(uint8_t target) = 0;
 
-
 protected:
     uint8_t target = 0;
-     uint8_t current = 0;
+    uint8_t current = 0;
 };
 
 

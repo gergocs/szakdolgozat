@@ -11,9 +11,9 @@ class MotorController {
 public:
     MotorController(uint8_t controllerPin1, uint8_t controllerPin2, uint8_t enablePin);
 
-    void setPower(uint8_t power);
+    void setPower(uint8_t newPower);
 
-    void setDirection(bool direction);
+    void setDirection(bool newDirection);
 
     void start();
 

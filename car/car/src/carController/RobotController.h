@@ -30,13 +30,15 @@ public:
 
     void setTargetSPeed(int16_t target);
 
-    int16_t getCurrentSpeed(uint32_t time, Encoder& encoder1, Encoder& encoder2);
+    int16_t getCurrentSpeed(uint32_t time, Encoder &encoder1, Encoder &encoder2);
 
     [[nodiscard]] uint32_t getLastTime() const;
 
-    bool isCruseControl() const;
+    [[nodiscard]] bool isCruseControl() const;
 
-    void setCruseControl(bool cruseControl);
+    void setCruseControl(bool enableCruseControl);
+
+    virtual ~RobotController();
 
 private:
     void setMotors(int16_t power1, int16_t power2);

@@ -11,7 +11,7 @@
 #include <memory>
 
 #include "carController/RobotController.h"
-#include "carController/Encoder/Encoder.h"
+#include "carController/encoder/Encoder.h"
 #include "carController/PID/PID.h"
 
 class State {
@@ -23,8 +23,8 @@ public:
     };
 
     struct OutGoing {
-        uint8_t speed;
-        bool isBattery;
+        [[maybe_unused]] uint8_t speed;
+        [[maybe_unused]] bool isBattery;
     };
 
     static State &getInstance() {
@@ -42,25 +42,25 @@ public:
 
     [[nodiscard]] bool isButtonValue() const;
 
-    void setReadXValue(uint8_t readXValue);
+    void setReadXValue(uint8_t xValue);
 
-    void setReadYValue(uint8_t readYValue);
+    void setReadYValue(uint8_t yValue);
 
-    void setButtonValue(bool buttonValue);
+    void setButtonValue(bool bValue);
 
     [[nodiscard]] const std::unique_ptr<RobotController> &getRobotController() const;
 
     [[nodiscard]] volatile bool getIsDataReady() const;
 
-    void setIsDataReady(volatile bool isDataReady);
+    void setIsDataReady(volatile bool ready);
 
     Encoder &getEncoder(uint8_t index) {
         return encoders[index];
     }
 
-    bool isDataValid1() const;
+    [[nodiscard]] bool isDataValid1() const;
 
-    void setIsDataValid(bool isDataValid);
+    void setIsDataValid(bool valid);
 
 private:
     State();

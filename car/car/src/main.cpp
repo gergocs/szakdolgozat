@@ -11,7 +11,7 @@ void move() {
         auto speed = State::getInstance().getRobotController()->getCurrentSpeed(time,
                                                                                 State::getInstance().getEncoder(0),
                                                                                 State::getInstance().getEncoder(1));
-        State::getInstance().getOutgoingReadings().speed = map(speed, -70, 70, 0, 50);
+        State::getInstance().getOutgoingReadings().speed = map(speed, minEncoderValue, maxEncoderValue, 0, 50);
         State::getInstance().getOutgoingReadings().isBattery = false;
         State::getInstance().setIsDataReady(true);
     }
@@ -35,7 +35,7 @@ void move() {
         if (moveX < moveMin || moveX > moveMax) {
             State::getInstance().getRobotController()->setCruseControl(true);
 
-            int16_t speed = std::abs(moveX - 127) * 2;
+            int16_t speed = std::abs(moveX - controllerCenter) * 2;
 
             State::getInstance().getRobotController()->setTargetSPeed(speed);
 
@@ -54,7 +54,7 @@ void move() {
             return;
         }
     } else {
-        int16_t speed = std::abs(moveX - 127) * 2;
+        int16_t speed = std::abs(moveX - controllerCenter) * 2;
 
         if (moveY < moveMin && speed > 20) { // TODO Check if this is correct
             State::getInstance().getRobotController()->left(speed);

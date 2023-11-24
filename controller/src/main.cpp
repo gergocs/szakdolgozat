@@ -3,8 +3,6 @@
 #include "utils/communication.h"
 
 void setup() {
-    Serial.begin(9600);
-
     State::getInstance().getGraph()->printText("Preparing the communication...");
 
     delay(1000);
@@ -22,8 +20,8 @@ void setup() {
     State::getInstance().getGraph()->printText("Waiting for connection");
 
     State::getInstance().getOutgoingReadings().buttonValue = true;
-    State::getInstance().getOutgoingReadings().xValue = 127;
-    State::getInstance().getOutgoingReadings().yValue = 127;
+    State::getInstance().getOutgoingReadings().xValue = controllerCenter;
+    State::getInstance().getOutgoingReadings().yValue = controllerCenter;
 
 
     while (!State::getInstance().isDataValid1()) {
@@ -44,9 +42,9 @@ void setup() {
 
     if (!State::getInstance().getInComingReadings().isBattery) {
         State::getInstance().getGraph()->drawData();
+    } else {
+        delay(5000);
     }
-
-    delay(5000);
 }
 
 void loop() {
@@ -54,10 +52,6 @@ void loop() {
         esp_now_deinit();
         State::getInstance().getGraph()->clear();
         esp_deep_sleep_start();
-
-        while(true) {
-            delay(1000);
-        }
     }
 
     readInput();

@@ -24,7 +24,7 @@ void onDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len) {
     if (State::getInstance().getInComingReadings().isBattery) {
         State::getInstance().getGraph()->printText(
                 "Robot battery: " + std::to_string(State::getInstance().getInComingReadings().readYValue) + "%\n" +
-                "Controller battery: " + std::to_string(readBattery()) + "%)");
+                "Cont. battery: " + std::to_string(readBattery()) + "%");
         return;
     } else {
         State::getInstance().getGraph()->addData(State::getInstance().getInComingReadings().readYValue);
@@ -32,7 +32,7 @@ void onDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len) {
 }
 
 bool initESPNow() {
-    WiFi.mode(WIFI_STA);
+    WiFiClass::mode(WIFI_STA);
 
     if (esp_now_init() != ESP_OK) {
         State::getInstance().getGraph()->printText("ESP-NOW INIT ERROR");

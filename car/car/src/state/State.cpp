@@ -61,16 +61,16 @@ bool State::isButtonValue() const {
     return buttonValue;
 }
 
-void State::setReadXValue(uint8_t readXValue) {
-    State::readXValue = readXValue;
+void State::setReadXValue(uint8_t xValue) {
+    State::readXValue = xValue;
 }
 
-void State::setReadYValue(uint8_t readYValue) {
-    State::readYValue = readYValue;
+void State::setReadYValue(uint8_t yValue) {
+    State::readYValue = yValue;
 }
 
-void State::setButtonValue(bool buttonValue) {
-    State::buttonValue = buttonValue;
+void State::setButtonValue(bool bValue) {
+    State::buttonValue = bValue;
 }
 
 const std::unique_ptr<RobotController> &State::getRobotController() const {
@@ -81,14 +81,14 @@ volatile bool State::getIsDataReady() const {
     return isDataReady;
 }
 
-void State::setIsDataReady(volatile bool isDataReady) {
-    State::isDataReady = isDataReady;
+void State::setIsDataReady(volatile bool ready) {
+    State::isDataReady = ready;
 }
 
 bool State::isDataValid1() const {
     return isDataValid;
 }
 
-void State::setIsDataValid(bool isDataValid) {
-    State::isDataValid = isDataValid;
+void State::setIsDataValid(bool valid) {
+    State::isDataValid = valid;
 }

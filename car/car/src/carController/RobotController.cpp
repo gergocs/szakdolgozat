@@ -54,10 +54,10 @@ void RobotController::setMotors(int16_t power1, int16_t power2) {
 }
 
 int16_t RobotController::capPower(int16_t power) {
-    if (power > 255) {
-        return 255;
-    } else if (power < -255) {
-        return -255;
+    if (power > motorPowerMax) {
+        return motorPowerMax;
+    } else if (power < motorPowerMin) {
+        return motorPowerMin;
     }
 
     return power;
@@ -92,8 +92,8 @@ int16_t RobotController::getCurrentSpeed(uint32_t time, Encoder &encoder1, Encod
 
     this->lastTime = time;
 
-    if (enablePID && this->cruseControl) {
-        this->setSpeed(map(speed, -70, 70, 0, 255));
+    if (this->cruseControl) {
+        this->setSpeed(map(speed, minEncoderValue, maxEncoderValue, 0, motorPowerMax));
     }
 
     return speed;
@@ -107,6 +107,8 @@ bool RobotController::isCruseControl() const {
     return cruseControl;
 }
 
-void RobotController::setCruseControl(bool cruseControl) {
-    RobotController::cruseControl = cruseControl;
+void RobotController::setCruseControl(bool enableCruseControl) {
+    RobotController::cruseControl = enableCruseControl;
 }
+
+RobotController::~RobotController() = default;

@@ -15,12 +15,12 @@ MotorController::MotorController(const uint8_t controllerPin1, const uint8_t con
     this->stop();
 }
 
-void MotorController::setPower(uint8_t power) {
-    this->power = power;
+void MotorController::setPower(uint8_t newPower) {
+    this->power = newPower;
 }
 
-void MotorController::setDirection(bool direction) {
-    this->direction = direction;
+void MotorController::setDirection(bool newDirection) {
+    this->direction = newDirection;
 }
 
 void MotorController::start() {

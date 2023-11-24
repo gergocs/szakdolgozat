@@ -25,12 +25,19 @@ constexpr uint8_t controller1Pin2 = 25;
 constexpr uint8_t controller1EnablePin = 33;
 
 constexpr uint8_t restartOffset = 15;
-constexpr uint8_t moveMin = (std::numeric_limits<uint8_t>::max() / 2) - restartOffset;
-constexpr uint8_t moveMax = (std::numeric_limits<uint8_t>::max() / 2) + restartOffset;
+constexpr uint8_t controllerCenter = std::numeric_limits<uint8_t>::max() / 2;
+constexpr uint8_t moveMin = controllerCenter - restartOffset;
+constexpr uint8_t moveMax = controllerCenter + restartOffset;
 constexpr uint8_t timeOfCheckMax = 30;
 constexpr uint32_t waitTime = 300000000;
 constexpr uint8_t divider = 80;
 
-constexpr bool enablePID = true;
+constexpr int16_t motorPowerMin = -255;
+constexpr int16_t motorPowerMax = 255;
+
+constexpr uint16_t voltageMax = 3000; // Max Voltage of batteries in mV
+
+constexpr int8_t minEncoderValue = -70;
+constexpr int8_t maxEncoderValue = 70;
 
 #endif //CAR_CONFIG_H

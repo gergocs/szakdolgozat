@@ -37,7 +37,7 @@ public:
 
     [[nodiscard]] const std::unique_ptr<Graph> &getGraph() const;
 
-    uint8_t getErrorCounter() const;
+    [[nodiscard]] uint8_t getErrorCounter() const;
 
     void incrementErrorCounter();
 
@@ -45,13 +45,13 @@ public:
 
     void resetTimer();
 
-    bool isDataValid1() const;
+    [[nodiscard]] bool isDataValid1() const;
 
-    void setIsDataValid(bool isDataValid);
+    void setIsDataValid(bool valid);
 
-    bool isGoToSleep1() const;
+    [[nodiscard]] bool isGoToSleep1() const;
 
-    void setIsGoToSleep(bool isGoToSleep);
+    void setIsGoToSleep(bool sleep);
 
 private:
     State();

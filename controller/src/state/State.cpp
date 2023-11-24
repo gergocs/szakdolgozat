@@ -6,8 +6,6 @@
 
 void IRAM_ATTR Timer0_ISR() {
     State::getInstance().setIsGoToSleep(true);
-    /*esp_now_deinit();
-    esp_deep_sleep_start();*/
 }
 
 State::State() : graph(std::make_unique<Graph>(displayAddress, sdaPin, sclPin)), errorCounter(0), timer(),
@@ -17,8 +15,6 @@ State::State() : graph(std::make_unique<Graph>(displayAddress, sdaPin, sclPin)),
     timerAttachInterrupt(this->timer, &Timer0_ISR, true);
     timerAlarmWrite(this->timer, waitTime, true);
     timerAlarmEnable(this->timer);
-
-    Serial.println("State created");
 }
 
 State::Outgoing &State::getOutgoingReadings() {
@@ -46,26 +42,23 @@ void State::resetErrorCounter() {
 }
 
 void State::resetTimer() {
-    Serial.println("Resetting timer");
     if (this->timer) {
         timerWrite(this->timer, 0);
     }
-
-    Serial.println("Alma");
 }
 
 bool State::isDataValid1() const {
     return isDataValid;
 }
 
-void State::setIsDataValid(bool isDataValid) {
-    State::isDataValid = isDataValid;
+void State::setIsDataValid(bool valid) {
+    State::isDataValid = valid;
 }
 
 bool State::isGoToSleep1() const {
     return isGoToSleep;
 }
 
-void State::setIsGoToSleep(bool isGoToSleep) {
-    State::isGoToSleep = isGoToSleep;
+void State::setIsGoToSleep(bool sleep) {
+    State::isGoToSleep = sleep;
 }

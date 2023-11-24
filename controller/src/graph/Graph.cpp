@@ -3,6 +3,7 @@
 //
 
 #include "Graph.h"
+#include "config.h"
 
 Graph::Graph(uint8_t address, int8_t sda, int8_t scl) {
     display = std::make_unique<Adafruit_SH1106>(sda, scl);
@@ -11,10 +12,11 @@ Graph::Graph(uint8_t address, int8_t sda, int8_t scl) {
     display->clearDisplay();
     display->setTextSize(1);
     display->setTextColor(WHITE);
+
     this->xStart = 0;
     this->yStart = 0;
-    this->xEnd = 120;
-    this->yEnd = 60;
+    this->xEnd = displayGraphWidth;
+    this->yEnd = displayGraphHeight;
     this->points = std::deque<int16_t>();
 }
 
@@ -27,19 +29,19 @@ void Graph::drawAxis(int16_t x0, int16_t y0, int16_t x1, int16_t y1) {
     display->drawLine(this->xStart, this->yEnd, this->xEnd, this->yEnd, WHITE);
     display->drawLine(this->xStart, this->yStart, this->xStart, this->yEnd, WHITE);
 
-    for (int32_t i = 0; i < (((this->yEnd - this->yStart) * 100) / 500); i++)
-    {
-        display->drawLine(this->xStart - 1, this->yEnd - (i + 1) * 5, this->xStart + 1, this->yEnd - (i + 1) * 5, WHITE);
+    for (int32_t i = 0; i < (((this->yEnd - this->yStart) * 100) / 500); i++) {
+        display->drawLine(this->xStart - 1, this->yEnd - (i + 1) * 5, this->xStart + 1, this->yEnd - (i + 1) * 5,
+                          WHITE);
     }
 
-    for (int32_t i = 0; i < (((this->xEnd - this->xStart) * 100) / 500); i++)
-    {
-        display->drawLine(this->xStart + (i + 1) * 5, this->yEnd - 1, this->xStart + (i + 1) * 5, this->yEnd + 1, WHITE);
+    for (int32_t i = 0; i < (((this->xEnd - this->xStart) * 100) / 500); i++) {
+        display->drawLine(this->xStart + (i + 1) * 5, this->yEnd - 1, this->xStart + (i + 1) * 5, this->yEnd + 1,
+                          WHITE);
     }
 }
 
 void Graph::addData(int16_t data) {
-    if (this->points.size() > 120) {
+    if (this->points.size() > displayGraphWidth) {
         this->points.pop_front();
     }
 
@@ -52,7 +54,7 @@ void Graph::drawData() {
 
     if (this->points.size() >= 2) {
         for (int i = 1; i < this->points.size(); ++i) {
-            display->drawLine(i -1, this->points[i - 1], i, this->points[i], WHITE);
+            display->drawLine(i - 1, this->points[i - 1], i, this->points[i], WHITE);
         }
     }
 

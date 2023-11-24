@@ -17,7 +17,7 @@ public:
 
     void setPos(int32_t pos);
 
-    int32_t getPrevPos() const;
+    [[nodiscard]] int32_t getPrevPos() const;
 
     void setPrevPos(int32_t prevPos);
 

@@ -15,16 +15,20 @@ constexpr uint8_t analogYPin = 39;
 constexpr uint8_t batteryPin = 34;
 
 constexpr uint8_t displayAddress = 0x3C;
+constexpr int16_t displayGraphWidth = 120;
+constexpr int16_t displayGraphHeight = 60;
 
-//constexpr uint8_t broadcastAddress[] = {0xC8, 0xF0, 0x9E, 0xF3, 0xD8, 0x08};
-//constexpr uint8_t broadcastAddress[] = {0xB0, 0xA7, 0x32, 0x2B, 0xD7, 0xAC};
 constexpr uint8_t broadcastAddress[] = {0xB0, 0xA7, 0x32, 0x2B, 0x51, 0x0C};
 
 constexpr uint8_t espNowErrorMax = 100;
 constexpr uint8_t restartOffset = 20;
-constexpr uint8_t restartMin = (std::numeric_limits<uint8_t>::max() / 2) - restartOffset;
-constexpr uint8_t restartMax = (std::numeric_limits<uint8_t>::max() / 2) + restartOffset;
+constexpr uint8_t controllerCenter = std::numeric_limits<uint8_t>::max() / 2;
+constexpr uint8_t restartMin = controllerCenter - restartOffset;
+constexpr uint8_t restartMax = controllerCenter + restartOffset;
 constexpr uint32_t waitTime = 300000000;
 constexpr uint8_t divider = 80;
+
+constexpr uint16_t adcMax = 4095;
+constexpr uint16_t voltageMax = 2300; // Max Voltage of batteries in mV
 
 #endif //CONTROLLER_CONFIG_H
