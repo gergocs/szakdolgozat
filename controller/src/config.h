@@ -18,7 +18,8 @@ constexpr uint8_t displayAddress = 0x3C;
 constexpr int16_t displayGraphWidth = 120;
 constexpr int16_t displayGraphHeight = 60;
 
-constexpr uint8_t broadcastAddress[] = {0xB0, 0xA7, 0x32, 0x2B, 0x51, 0x0C};
+//constexpr uint8_t broadcastAddress[] = {0x9C, 0x9C, 0x1F, 0xDC, 0x2C, 0xC0};
+constexpr uint8_t broadcastAddress[] = {0xB0, 0xA7, 0x32, 0x2B, 0x09, 0x7c};
 
 constexpr uint8_t espNowErrorMax = 100;
 constexpr uint8_t restartOffset = 20;

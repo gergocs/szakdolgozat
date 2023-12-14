@@ -3,9 +3,9 @@
 #include "utils/communication.h"
 
 void move() {
-    uint8_t moveX = State::getInstance().getReadXValue();
-    uint8_t moveY = State::getInstance().getReadYValue();
-    bool button = State::getInstance().isButtonValue();
+    auto moveX = State::getInstance().getReadXValue();
+    auto moveY = State::getInstance().getReadYValue();
+    auto button = State::getInstance().isButtonValue();
 
     if (auto time = millis(); time - State::getInstance().getRobotController()->getLastTime() > timeOfCheckMax) {
         auto speed = State::getInstance().getRobotController()->getCurrentSpeed(time,
@@ -20,7 +20,7 @@ void move() {
         if (button && moveX > moveMin && moveX < moveMax && moveY > moveMin && moveY < moveMax) {
             State::getInstance().getRobotController()->setCruseControl(false);
             State::getInstance().getRobotController()->setSpeed(0);
-            State::getInstance().getRobotController()->setTargetSPeed(0);
+            State::getInstance().getRobotController()->setTargetSpeed(0);
             State::getInstance().getRobotController()->stop();
             delay(500);
             return;
@@ -31,13 +31,12 @@ void move() {
         return;
     }
 
+    int16_t speed = std::abs(moveX - controllerCenter) * 2;
+
     if (button) {
         if (moveX < moveMin || moveX > moveMax) {
             State::getInstance().getRobotController()->setCruseControl(true);
-
-            int16_t speed = std::abs(moveX - controllerCenter) * 2;
-
-            State::getInstance().getRobotController()->setTargetSPeed(speed);
+            State::getInstance().getRobotController()->setTargetSpeed(speed);
 
             if (moveX < moveMin) {
                 State::getInstance().getRobotController()->reverse(speed);
@@ -54,8 +53,6 @@ void move() {
             return;
         }
     } else {
-        int16_t speed = std::abs(moveX - controllerCenter) * 2;
-
         if (moveY < moveMin && speed > 20) { // TODO Check if this is correct
             State::getInstance().getRobotController()->left(speed);
         } else if (moveY > moveMax && speed > 20) {
@@ -67,7 +64,7 @@ void move() {
                 State::getInstance().getRobotController()->straight(speed);
             } else {
                 State::getInstance().getRobotController()->setSpeed(0);
-                State::getInstance().getRobotController()->setTargetSPeed(0);
+                State::getInstance().getRobotController()->setTargetSpeed(0);
                 State::getInstance().getRobotController()->stop();
                 delay(20);
                 return;

@@ -73,12 +73,11 @@ void RobotController::setSpeed(int16_t speed) {
     }
 }
 
-void RobotController::setTargetSPeed(int16_t target) {
+void RobotController::setTargetSpeed(int16_t target) {
     this->controller->setTarget(target);
 }
 
 int16_t RobotController::getCurrentSpeed(uint32_t time, Encoder &encoder1, Encoder &encoder2) {
-    Serial.println(encoder1.getPos());
     auto delta1 = encoder1.getPos() - encoder1.getPrevPos();
     auto delta2 = encoder2.getPos() - encoder2.getPrevPos();
 

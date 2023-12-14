@@ -45,6 +45,12 @@ void Graph::addData(int16_t data) {
         this->points.pop_front();
     }
 
+    if (data > displayGraphHeight) {
+        data = displayGraphHeight;
+    } else if (data < 0) {
+        data = 0;
+    }
+
     this->points.push_back(data);
 }
 

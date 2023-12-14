@@ -35,9 +35,9 @@ State::State() : encoders({Encoder(encoder0APin, encoder0BPin), Encoder(encoder1
     attachInterrupt(digitalPinToInterrupt(encoder1BPin), &Encoder1_ISR, CHANGE);
 
     this->robotController->stop();
-    this->robotController->setTargetSPeed(0);
-    this->inComingReadings.xValue = 127;
-    this->inComingReadings.yValue = 127;
+    this->robotController->setTargetSpeed(0);
+    this->inComingReadings.xValue = controllerCenter;
+    this->inComingReadings.yValue = controllerCenter;
     this->inComingReadings.buttonValue = false;
 }
 

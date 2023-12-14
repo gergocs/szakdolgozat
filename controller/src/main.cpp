@@ -17,8 +17,6 @@ void setup() {
 
     delay(3000);
 
-    State::getInstance().getGraph()->printText("Waiting for connection");
-
     State::getInstance().getOutgoingReadings().buttonValue = true;
     State::getInstance().getOutgoingReadings().xValue = controllerCenter;
     State::getInstance().getOutgoingReadings().yValue = controllerCenter;
@@ -28,6 +26,9 @@ void setup() {
         esp_now_send(broadcastAddress, (uint8_t *) &State::getInstance().getOutgoingReadings(),
                      sizeof(State::getInstance().getOutgoingReadings()));
         delay(100);
+
+        State::getInstance().getGraph()->printText(
+                "Waiting for robot\nCont. battery: " + std::to_string(readBattery()) + "%");
 
         if (State::getInstance().isGoToSleep1()) {
             State::getInstance().getGraph()->clear();

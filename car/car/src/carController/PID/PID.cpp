@@ -17,12 +17,11 @@ uint8_t PID::calculate(uint8_t input) {
         this->errorHistory.pop_front();
     }
 
-    auto derivative = (error - this->prevError) / deltaTime;
-
     this->prevError = error;
     this->prevT = currentTime;
 
-    return (PID::Kp * error) + (PID::Ki * this->calculateErrorHistory()) + (PID::Kd * derivative);
+    return (PID::Kp * error) + (PID::Ki * this->calculateErrorHistory()) +
+           (PID::Kd * ((error - this->prevError) / deltaTime));
 }
 
 void PID::setTarget(uint8_t target) {

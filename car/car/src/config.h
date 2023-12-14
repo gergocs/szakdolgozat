@@ -8,7 +8,6 @@
 #include <cstdint>
 #include <limits>
 
-//constexpr uint8_t broadcastAddress[] = {0x9C, 0x9C, 0x1F, 0xDC, 0x2C, 0xC0};
 constexpr uint8_t broadcastAddress[] = {0xB0, 0xA7, 0x32, 0x2B, 0xD7, 0xAC};
 
 constexpr uint8_t encoder0APin = 22;

@@ -31,8 +31,8 @@ void MotorController::start() {
 
 void MotorController::stop() {
     analogWrite(this->enablePin, 0);
-    digitalWrite(this->controllerPin1, HIGH);
-    digitalWrite(this->controllerPin2, HIGH);
+    digitalWrite(this->controllerPin1, LOW);
+    digitalWrite(this->controllerPin2, LOW);
 }
 
 bool MotorController::isDirection() const {

@@ -28,7 +28,7 @@ public:
 
     void setSpeed(int16_t speed);
 
-    void setTargetSPeed(int16_t target);
+    void setTargetSpeed(int16_t target);
 
     int16_t getCurrentSpeed(uint32_t time, Encoder &encoder1, Encoder &encoder2);
 
